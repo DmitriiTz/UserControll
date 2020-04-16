@@ -55,7 +55,9 @@
             <form method="post" action="{{route('users.store')}}">
                 @csrf
                 @method('POST')
-                <input name="name" value="">
+                <input name="first_name" placeholder="Имя">
+                <input name="second_name" placeholder="Фамилия">
+                <input name="patronymic" placeholder="Отчетсво">
                 <select name="city_id">
                     @foreach($cities as $city)
                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -81,7 +83,7 @@
                         <form method="post" action="{{route('index')}}">
                             @csrf
                             @method('POST')
-                            <input name="name" value="">
+                            <input name="name" placeholder="Введите ФИО">
                             <button type="submit">Найти</button>
                         </form>
                     </th>
