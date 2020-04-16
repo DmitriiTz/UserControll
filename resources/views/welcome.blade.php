@@ -55,10 +55,10 @@
             <form method="post" action="{{route('users.store')}}">
                 @csrf
                 @method('POST')
-                <input name="first_name" placeholder="Имя">
-                <input name="second_name" placeholder="Фамилия">
+                <input name="first_name" placeholder="Имя" required>
+                <input name="second_name" placeholder="Фамилия" required>
                 <input name="patronymic" placeholder="Отчетсво">
-                <input name="email" placeholder="Email">
+                <input name="email" placeholder="Email" required>
                 <select name="city_id">
                     @foreach($cities as $city)
                         <option value="{{$city->id}}">{{$city->name}}</option>

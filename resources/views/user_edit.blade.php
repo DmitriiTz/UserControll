@@ -53,7 +53,10 @@
 
         <div>
             <form action="" method="post">
-                <input name="name" value="{{$user->name}}">
+                <input name="first_name" value="{{$user->first_name}}" placeholder="Имя" required>
+                <input name="second_name" value="{{$user->second_name}}" placeholder="Фамилия" required>
+                <input name="patronymic" value="{{$user->patronymic}}" placeholder="Отчетсво">
+                <input name="email" value="{{$user->email}}" placeholder="Email" required>
                 <select name="city">
                     @foreach($cities as $city)
                         <option value="{{$city->name}}" {{(old("city") == $city->name ? "selected":"")}}>{{$city->name}}</option>
