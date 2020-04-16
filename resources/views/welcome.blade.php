@@ -58,6 +58,7 @@
                 <input name="first_name" placeholder="Имя">
                 <input name="second_name" placeholder="Фамилия">
                 <input name="patronymic" placeholder="Отчетсво">
+                <input name="email" placeholder="Email">
                 <select name="city_id">
                     @foreach($cities as $city)
                         <option value="{{$city->id}}">{{$city->name}}</option>
