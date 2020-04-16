@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('second_name');
-            $table->string('patronymic');
+            $table->string('patronymic')->nullable();
             $table->string('email');
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->timestamps();
