@@ -16,7 +16,6 @@ class UserController extends Controller
     {
         $users = User::with('city')->get();
         $cities = City::all();
-
         return view('welcome')->with(['users' => $users, 'cities' => $cities]);
     }
 
@@ -25,9 +24,10 @@ class UserController extends Controller
      * @param UserStoreRequest $request
      * @return mixed
      */
-    public function store(User $user, UserStoreRequest $request)
+    public function store(UserStoreRequest $request)
     {
-        return $user->create($request->validated());
+        User::create($request->validated());
+        return redirect('/');
     }
 
     /**
@@ -41,10 +41,12 @@ class UserController extends Controller
 
     /**
      * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(User $user)
     {
-        //
+        $cities = City::all();
+        return view('user_edit')->with(['cities' => $cities, 'user' => $user]);
     }
 
     /**
@@ -59,13 +61,12 @@ class UserController extends Controller
 
     /**
      * @param User $user
-     * @return bool|null
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
     public function destroy(User $user)
     {
-       $user = User::find($user->id);
-       $user->delete();
+        $user->delete();
         return redirect('/');
     }
 }
