@@ -20,7 +20,10 @@ $factory->define(User::class, function (Faker $faker) {
     $cities = \App\City::all()->pluck('id')->toArray();
 
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->firstName,
+        'second_name' => $faker->lastName,
+        'patronymic' => $faker->firstName,
+        'email' => $faker->email,
         'city_id' => $faker->randomElement($cities),
     ];
 });

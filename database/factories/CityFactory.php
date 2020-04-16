@@ -18,6 +18,6 @@ use Faker\Generator as Faker;
 
 $factory->define(City::class, function (Faker $faker) {
     return [
-        'name' => $faker->unique()->sentence(1)
+        'name' => $faker->city
     ];
 });
