@@ -20,10 +20,6 @@
             margin: 0;
         }
 
-        .full-height {
-            height: 40vh;
-        }
-
         .flex-center {
             align-items: center;
             display: flex;
@@ -44,11 +40,12 @@
 
         .m-b-md {
             margin-bottom: 30px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-<div class="flex-center position-ref full-height">
+<div class="flex-center position-ref">
     <div class="content">
         <div class="title m-b-md">
             User Controll
@@ -63,26 +60,36 @@
                     @endforeach
                 </select>
                 <button type="submit">Найти</button>
+                <a href="{{route('users.create')}}">Создать</a>
             </form>
         </div>
-
+        <br>
         <div>
-            <table style="width: -webkit-fill-available">
+            <table style="text-align: left">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>ФИО</th>
                     <th>Город</th>
                     <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    @foreach($users as $user)
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
-                        <td>{{$user->city}}</td>
-                        <td><a href="{{route('user.destroy', $user->id)}}">Удалить</a></td>
-                    @endforeach
-                </tr>
+                        <td>{{$user->city->name}}</td>
+                        <td><a href="{{route('users.edit', $user->id)}}" >Редактировать</a></td>
+                        <td>
+                            <form method="POST" action="{{route('users.destroy', $user->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
