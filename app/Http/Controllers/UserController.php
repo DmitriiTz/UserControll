@@ -56,7 +56,8 @@ class UserController extends Controller
      */
     public function update(User $user, UserUpdateRequest $request)
     {
-        return $user->update($request->validated());
+        $user->update($request->validated());
+        return redirect('/');
     }
 
     /**

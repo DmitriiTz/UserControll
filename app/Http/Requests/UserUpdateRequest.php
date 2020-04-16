@@ -24,8 +24,11 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable|string|max:255',
-            'city' => 'nullable|integer'
+            'first_name' => 'nullable|string|max:255',
+            'second_name' => 'nullable|string|max:255',
+            'patronymic' => 'nullable|string|max:255',
+            'email' => 'nullable|email',
+            'city_id' => 'nullable|integer'
         ];
     }
 }

@@ -48,22 +48,23 @@
 <div class="flex-center position-ref">
     <div class="content">
         <div class="title m-b-md">
-            User Controll
+            User Update
         </div>
 
         <div>
-            <form action="" method="post">
+            <form action="{{route('users.update', $user->id)}}" method="post">
+                @csrf
+                @method('PUT')
                 <input name="first_name" value="{{$user->first_name}}" placeholder="Имя" required>
                 <input name="second_name" value="{{$user->second_name}}" placeholder="Фамилия" required>
                 <input name="patronymic" value="{{$user->patronymic}}" placeholder="Отчетсво">
                 <input name="email" value="{{$user->email}}" placeholder="Email" required>
-                <select name="city">
+                <select name="city_id">
                     @foreach($cities as $city)
-                        <option value="{{$city->name}}" {{(old("city") == $city->name ? "selected":"")}}>{{$city->name}}</option>
+                        <option value="{{$city->id}}" {{($user->city->name == $city->name ? "selected":"")}}>{{$city->name}}</option>
                     @endforeach
                 </select>
-                <button type="submit">Найти</button>
-                <a href="{{route('users.create')}}">Создать</a>
+                <button type="submit">Обновить</button>
             </form>
         </div>
         <br>
