@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\City;
 use Faker\Generator as Faker;
 
 /*
@@ -16,11 +16,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
-    $cities = \App\City::all()->pluck('id')->toArray();
-
+$factory->define(City::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'city_id' => $faker->randomElement($cities),
+        'name' => $faker->unique()->sentence(1)
     ];
 });
