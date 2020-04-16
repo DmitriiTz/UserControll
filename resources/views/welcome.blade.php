@@ -52,26 +52,53 @@
         </div>
 
         <div>
-            <form action="" method="post">
-                <input name="name">
-                <select name="city">
+            <form method="post" action="{{route('users.store')}}">
+                @csrf
+                @method('POST')
+                <input name="name" value="">
+                <select name="city_id">
                     @foreach($cities as $city)
-                        <option value="{{$city->name}}"></option>
+                        <option value="{{$city->id}}">{{$city->name}}</option>
                     @endforeach
                 </select>
-                <button type="submit">Найти</button>
-                <a href="{{route('users.create')}}">Создать</a>
+                <button type="submit">Создать пользователя</button>
             </form>
         </div>
-        <br>
+        <br><hr>
         <div>
             <table style="text-align: left">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>ФИО</th>
+                    <th>Email</th>
                     <th>Город</th>
                     <th>Действия</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>
+                        <form method="post" action="{{route('index')}}">
+                            @csrf
+                            @method('POST')
+                            <input name="name" value="">
+                            <button type="submit">Найти</button>
+                        </form>
+                    </th>
+                    <th></th>
+                    <th>
+                        <form method="post" action="{{route('index')}}">
+                            @csrf
+                            @method('POST')
+                            <select name="city_id">
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit">Сортировать</button>
+                        </form>
+                    </th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -79,13 +106,17 @@
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
                         <td>{{$user->city->name}}</td>
-                        <td><a href="{{route('users.edit', $user->id)}}" >Редактировать</a></td>
+                        <td>
+                            <form method="GET" action="{{route('users.edit', $user->id)}}">
+                                <button type="submit">Редактировать</button>
+                            </form>
                         <td>
                             <form method="POST" action="{{route('users.destroy', $user->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete</button>
+                                <button type="submit">Удалить</button>
                             </form>
                         </td>
                     </tr>
