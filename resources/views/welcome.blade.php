@@ -67,7 +67,8 @@
                 <button type="submit">Создать пользователя</button>
             </form>
         </div>
-        <br><hr>
+        <br>
+        <hr>
         <div>
             <table style="text-align: left">
                 <thead>
@@ -81,19 +82,16 @@
                 <tr>
                     <th></th>
                     <th>
-                        <form method="post" action="{{route('index')}}">
-                            @csrf
-                            @method('POST')
+                        <form method="get" action="{{route('index')}}">
                             <input name="name" placeholder="Введите ФИО">
                             <button type="submit">Найти</button>
                         </form>
                     </th>
                     <th></th>
                     <th>
-                        <form method="post" action="{{route('index')}}">
-                            @csrf
-                            @method('POST')
+                        <form method="get" action="{{route('index')}}">
                             <select name="city_id">
+                                <option value="">Все</option>
                                 @foreach($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
                                 @endforeach
