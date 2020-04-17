@@ -20,6 +20,10 @@ class ApiController extends Controller
         return $users;
     }
 
+    /**
+     * @param FilterNameRequest $request
+     * @return mixed
+     */
     public function name(FilterNameRequest $request)
     {
         $validated = $request->validated();
@@ -31,6 +35,10 @@ class ApiController extends Controller
         return $users;
     }
 
+    /**
+     * @param FilterCityRequest $request
+     * @return mixed
+     */
     public function city(FilterCityRequest $request)
     {
         $validated = $request->validated();
