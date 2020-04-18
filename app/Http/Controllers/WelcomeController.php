@@ -18,7 +18,6 @@ class WelcomeController extends Controller
         $cities = City::all();
 
         if($request->name ?? false){
-            $name = explode(' ', $request->name);
             $users = User::orWhere('first_name' , 'like' , '%' . $request->name . '%' )
             ->orWhere('second_name' , 'like' , '%' . $request->name . '%' )
             ->orWhere('patronymic' , 'like' , '%' . $request->name . '%' )
