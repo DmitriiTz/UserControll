@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'namespace' => 'Api',
 ], function (){
-    Route::get('/users', 'ApiController@index');
-    Route::get('/users/name/', 'ApiController@name');
-    Route::get('/users/city/', 'ApiController@city');
+    Route::get('/users', 'ApiController@index')->name('api.index');
+    Route::get('/users/name/', 'ApiController@name')->name('api.name');
+    Route::get('/users/city/', 'ApiController@city')->name('api.city');
 });
